@@ -44,4 +44,8 @@
     <loc>https://manivarmacyber.github.io/blog/missing-function-level-access-control-owasp-a01</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://manivarmacyber.github.io/blog/bola-owasp-api1</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
