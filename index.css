@@ -682,8 +682,11 @@ button,
       radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.05), transparent 40%);
   }
 
-  /* ── Container ── */
-  .container-progressive {
+  /* ── Universal Container Alignment System ── */
+  /* Extends the strict padding equality to hit all custom and generic layout wrappers */
+  .container-progressive,
+  .container,
+  .max-w-7xl {
     width: 100%;
     max-width: 1250px;
     margin-left: auto;
