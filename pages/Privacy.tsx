@@ -11,38 +11,47 @@ export const Privacy: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="markdown-body"
         >
-          <h1 className="font-orbitron font-black text-3xl md:text-5xl uppercase tracking-tighter mb-8 italic text-text-primary">Privacy <span className="text-accent-primary">Policy</span></h1>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-text-muted mb-12 opacity-60">Last updated: March 04, 2026</p>
+          <h1 className="font-orbitron font-black text-3xl md:text-5xl uppercase tracking-tighter mb-8 italic text-text-primary">
+            Privacy <span className="text-accent-primary">Policy</span>
+          </h1>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-text-muted mb-12 opacity-60">
+            Last updated: March 19, 2026
+          </p>
 
           <div className="space-y-12 text-sm leading-relaxed font-medium">
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">1. Information We Collect</h2>
-              <p>We collect information you provide directly to us when you contact us through our website. This may include your name, email address, and any other information you choose to provide. We also automatically collect certain information when you visit our site, such as your IP address and browser type, through standard log files.</p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Introduction</h2>
+              <p>Welcome to our cybersecurity portfolio and research platform. We value your privacy and are committed to protecting any information you may share while interacting with this website. This Privacy Policy outlines how your data is handled when you visit our site.</p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">2. Cookies and Web Beacons</h2>
-              <p>Like any other website, this research portal uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Information Collection</h2>
+              <p>We do not directly collect any personal identifiable information (PII) from our visitors. However, automated tools such as Google Analytics are utilized to collect anonymized technical data, including your IP address, browser type, device information, and pages visited, to help us analyze traffic and improve content quality.</p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">3. Google DoubleClick DART Cookie</h2>
-              <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads" target="_blank" className="text-accent-primary hover:underline">https://policies.google.com/technologies/ads</a></p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Cookies</h2>
+              <p>This website uses "cookies" to enhance your browsing experience. Cookies are small data files stored on your device that help us remember your preferences, such as your theme selection, and optimize website performance for future visits.</p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">4. Advertising Partners</h2>
-              <p>Some of advertisers on our site may use cookies and web beacons. Our advertising partners include Google AdSense. Each of our advertising partners has their own Privacy Policy for their policies on user data.</p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Google AdSense</h2>
+              <p>We use Google AdSense to display advertisements on our site. Google may use cookies, including DART cookies, to serve personalized ads based on your visit to this website and other sites across the internet. You can choose to opt out of the use of the DART cookie by visiting the Google ad and content network Privacy Policy.</p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">5. Third Party Privacy Policies</h2>
-              <p>This Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Third-Party Services</h2>
+              <p>This platform integrates third-party tools, including Google Analytics and Google AdSense, to track website performance and serve advertisements. These services operate under their own respective Privacy Policies, and we encourage you to review them for more details on their data practices.</p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">6. Security Protocol</h2>
-              <p>We take reasonable measures to protect the information we collect from unauthorized access, use, or disclosure. However, as a security research portal, we remind users that no method of transmission over the internet is 100% secure.</p>
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Consent</h2>
+              <p>By continuing to use this website, you hereby consent to our Privacy Policy and agree to its terms and conditions.</p>
+            </section>
+
+            <section className="space-y-4">
+              <h2 className="font-orbitron text-xl text-text-primary uppercase tracking-widest border-l-4 border-accent-primary pl-4">Contact</h2>
+              <p>If you have any questions, require more information about our Privacy Policy, or wish to discuss cybersecurity collaboration, you can reach me directly via email at <a href="mailto:yourmail@gmail.com" className="text-accent-primary hover:underline">yourmail@gmail.com</a>.</p>
             </section>
           </div>
         </motion.div>

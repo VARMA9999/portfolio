@@ -22,18 +22,24 @@ export const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-6 text-text-muted text-lg leading-relaxed">
-              <p>
-                G. Manikanta Varma is a self-driven cybersecurity professional with a strong focus on penetration testing and bug hunting. Experienced in identifying and reporting real-time security issues through freelance projects and government programs.
+              <p className="font-medium text-text-primary">
+                I am G. Manikanta Varma, a cybersecurity analyst specializing in web application security and vulnerability assessment.
               </p>
               <p>
-                He is skilled in VAPT, Web application security, and using tools like Burp-Suite, Nmap, Nessus, and Metasploit. He holds a CEH Master v12 certification and is currently upgrading his skills while freelancing to help secure government assets.
+                This website is dedicated to sharing in-depth cybersecurity research, including OWASP Top 10 vulnerabilities, real-world exploitation techniques, and secure coding practices.
+              </p>
+              <p>
+                My goal is to educate developers, security professionals, and learners by providing practical and detailed security insights.
               </p>
 
               <div className="pt-8 border-t border-border-color mt-8">
-                <h3 className="font-orbitron font-black text-xl text-accent-primary mb-4 uppercase italic tracking-tighter">The Research Platform</h3>
-                <p className="text-sm font-medium leading-relaxed">
-                  This website serves as a dedicated knowledge repository for advanced cybersecurity research. My mission is to publish in-depth vulnerability analysis, architectural risk models (like BAC and IDOR), and educational security learning content to help the global developer community build more resilient software ecosystems.
-                </p>
+                <h3 className="font-orbitron font-black text-xl text-accent-primary mb-4 uppercase italic tracking-tighter">What You Will Find Here</h3>
+                <ul className="tactical-list space-y-2 text-sm font-medium">
+                  <li>Technical security blogs</li>
+                  <li>Vulnerability analysis (BOLA, IDOR, etc.)</li>
+                  <li>Hands-on research and case studies</li>
+                  <li>Security best practices</li>
+                </ul>
               </div>
 
               {/* Resume Buttons */}
@@ -68,22 +74,15 @@ export const About: React.FC = () => {
             </div>
             <div className="p-8 space-y-8 border border-border-color rounded-3xl"
               style={{ background: 'var(--bg-card)' }}>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-4">
                 <div className="w-12 h-12 rounded-xl bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary">
                   <Shield size={24} />
                 </div>
                 <div>
-                  <h4 className="font-orbitron font-bold">Mission</h4>
-                  <p className="text-sm text-text-muted/40">Securing the digital frontier through proactive defense.</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary">
-                  <Target size={24} />
-                </div>
-                <div>
-                  <h4 className="font-orbitron font-bold text-text-primary">Vision</h4>
-                  <p className="text-sm text-text-muted/40">Setting the standard for elite penetration testing.</p>
+                  <h4 className="font-orbitron font-bold text-xl mb-2 text-text-primary">Mission Statement</h4>
+                  <p className="text-base text-text-muted/80 leading-relaxed">
+                    To build a reliable knowledge platform for cybersecurity learning and awareness.
+                  </p>
                 </div>
               </div>
             </div>
