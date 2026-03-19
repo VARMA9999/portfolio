@@ -79,7 +79,7 @@ export const Hero: React.FC = () => {
           style={{ background: 'linear-gradient(90deg, transparent, var(--accent-glow-subtle), transparent)', opacity: 0.3 }} />
 
         {/* Hero content container */}
-        <div className="container mx-auto max-w-7xl px-4 relative z-10 w-full">
+        <div className="container-progressive relative z-10 w-full">
           <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
             {/* Main Content Area (left) */}
 

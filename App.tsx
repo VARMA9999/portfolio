@@ -112,7 +112,6 @@ const HomePage = () => (
       <Hero />
     </section>
 
-    <div className="container-progressive space-y-0">
       {/* 2. Self Driven */}
       <section id="mission">
         <ProfessionalMission />
@@ -167,7 +166,6 @@ const HomePage = () => (
       <section id="contact">
         <Contact />
       </section>
-    </div>
   </div>
 );
 

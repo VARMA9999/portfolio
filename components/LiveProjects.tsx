@@ -35,7 +35,7 @@ export const LiveProjects: React.FC = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 container-progressive text-left px-0">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 container-progressive text-left">
                 {projects.map((item, i) => (
                     <motion.a
                         key={i}

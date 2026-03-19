@@ -159,7 +159,7 @@ export const Contact: React.FC = () => {
         }}
       />
 
-      <div className="container-progressive relative z-10 px-0">
+      <div className="container-progressive relative z-10">
 
         {/* Section label */}
         <div className="flex items-center gap-4 mb-10">

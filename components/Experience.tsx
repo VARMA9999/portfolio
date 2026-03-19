@@ -56,7 +56,7 @@ export const Experience: React.FC = () => {
         <div className="w-1/4 h-px bg-border-color" />
       </div>
 
-      <div className="container-progressive relative px-0">
+      <div className="container-progressive relative">
         {/* Central Timeline Line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-border-color/20 -translate-x-1/2 hidden lg:block" />
         <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-border-color/20 lg:hidden" />

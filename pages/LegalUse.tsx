@@ -5,7 +5,7 @@ import { Shield } from 'lucide-react';
 export const LegalUse: React.FC = () => {
   return (
     <div className="pt-24 pb-12 notranslate">
-      <div className="container-progressive px-0">
+      <div className="container-progressive">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}

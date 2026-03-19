@@ -31,7 +31,7 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <div id="skills" className="py-20 space-y-24 container-progressive px-0">
+    <div id="skills" className="py-20 space-y-24 container-progressive">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
         <div className="space-y-4">

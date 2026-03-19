@@ -16,7 +16,7 @@ export const ProfessionalCertification: React.FC = () => {
         </h2>
       </div>
 
-      <div className="container-progressive space-y-20 px-0">
+      <div className="container-progressive space-y-20">
         {/* CEH Master Focus */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
