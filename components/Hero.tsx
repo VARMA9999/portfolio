@@ -8,7 +8,7 @@ import { CyberBackground } from './CyberBackground';
 /* ── Animated hero profile photo — CSS float (zero rAF cost) ── */
 const CyberShieldGraphic: React.FC = () => (
   <div
-    className="hero-float relative flex items-center justify-center w-[400px] h-[440px] sm:w-[480px] sm:h-[520px] md:w-[500px] md:h-[560px] lg:w-[580px] lg:h-[650px] xl:w-[640px] xl:h-[720px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
+    className="hero-float relative flex items-center justify-center w-[450px] h-[500px] sm:w-[540px] sm:h-[590px] md:w-[580px] md:h-[650px] lg:w-[660px] lg:h-[740px] xl:w-[750px] xl:h-[840px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
   >
     {/* Ambient glow behind subject */}
     <div
