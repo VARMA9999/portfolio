@@ -44,9 +44,9 @@ export const About: React.FC = () => {
 
               {/* Resume Buttons */}
               <div className="pt-6 border-t border-border-color mt-2 flex flex-col sm:flex-row flex-wrap gap-3">
-                {/* VIEW: Use /preview — works on all devices including mobile */}
+                {/* VIEW: Direct PDF Access */}
                 <a
-                  href="https://drive.google.com/file/d/1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ/preview"
+                  href="/Manikanta_Varma_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-accent-primary border border-accent-primary/30 bg-accent-primary/5 hover:bg-accent-primary/10 hover:border-accent-primary/60 transition-all"
@@ -57,11 +57,10 @@ export const About: React.FC = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                   View Resume
                 </a>
-                {/* DOWNLOAD: Direct download without redirect */}
+                {/* DOWNLOAD: Fallback/Forced Download Attribute */}
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/Manikanta_Varma_Resume.pdf"
+                  download="Manikanta_Varma_Resume.pdf"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-black bg-accent-primary hover:opacity-90 transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)]"
                   onClick={() => {
                     if ((window as any).gtag) (window as any).gtag('event', 'resume_download', { event_category: 'portfolio' });
