@@ -29,7 +29,7 @@ export const CyberLab: React.FC<CyberLabProps> = ({ vulnerability, insecureCode,
           </div>
         </div>
         
-        <div className="flex bg-black/40 p-1 rounded-xl border border-white/5">
+        <div className="flex bg-bg-secondary p-1 rounded-xl border border-border-color">
           <button 
             onClick={() => setShowSecure(false)}
             className={`px-4 py-2 rounded-lg text-[9px] font-mono font-black uppercase tracking-widest transition-all ${!showSecure ? 'bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)]' : 'text-text-muted hover:text-white'}`}

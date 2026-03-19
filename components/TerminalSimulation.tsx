@@ -137,9 +137,9 @@ export const TerminalSimulation: React.FC<TerminalSimulationProps> = ({
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#050506] overflow-hidden shadow-2xl my-8">
+    <div className="rounded-2xl border border-border-color bg-bg-primary overflow-hidden shadow-xl my-8">
       {/* Terminal Title Bar */}
-      <div className="bg-[#111] border-b border-white/10 p-3 flex items-center justify-between">
+      <div className="bg-bg-secondary border-b border-border-color p-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -154,7 +154,7 @@ export const TerminalSimulation: React.FC<TerminalSimulationProps> = ({
       </div>
 
       {/* Terminal Content */}
-      <div className="p-4 md:p-6 bg-[#0a0a0c] min-h-[300px] max-h-[500px] overflow-y-auto">
+      <div className="p-4 md:p-6 bg-bg-primary min-h-[300px] max-h-[500px] overflow-y-auto">
         <AnimatePresence>
           {/* History */}
           {executedCommands.map((cmd, i) => (
@@ -169,7 +169,7 @@ export const TerminalSimulation: React.FC<TerminalSimulationProps> = ({
                 <span className="font-mono text-[10px] sm:text-xs text-text-primary px-1">{cmd.command}</span>
                 <button 
                   onClick={() => copyToClipboard(cmd.command, i)}
-                  className="ml-auto p-1 rounded transition-colors opacity-0 group-hover:opacity-100 hover:bg-white/10"
+                  className="ml-auto p-1 rounded transition-colors opacity-0 group-hover:opacity-100 hover:bg-bg-secondary"
                   title="Copy command"
                 >
                   {copiedIndex === i ? <CheckCircle2 size={12} className="text-green-400" /> : <Copy size={12} className="text-text-muted" />}

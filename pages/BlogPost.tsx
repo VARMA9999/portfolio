@@ -292,7 +292,7 @@ const MethodologyCallout = React.memo<{
       </span>
       <div className="h-[1px] flex-1 bg-gradient-to-r from-accent-primary/20 to-transparent" />
     </div>
-    <p className="text-[13px] text-text-muted leading-relaxed font-mono italic">
+    <p className="text-[13px] text-gray-700 dark:text-text-muted leading-relaxed font-mono italic">
       {description}
     </p>
   </motion.div>
@@ -381,16 +381,16 @@ const CodeBlock = React.memo<{
 }>(({ code, label, isSecure }) => {
   if (!code) return null;
   return (
-    <div className="rounded-xl overflow-hidden border border-white/5">
+    <div className="rounded-xl overflow-hidden border border-border-color bg-bg-card">
       {label && (
         <div
-          className={`px-4 py-2 border-b border-white/5 font-mono text-[9px] uppercase tracking-widest font-black flex items-center gap-2 ${isSecure ? "bg-green-500/10 text-green-400" : "bg-red-500/10 text-red-400"}`}
+          className={`px-4 py-2 border-b border-border-color font-mono text-[9px] uppercase tracking-widest font-black flex items-center gap-2 ${isSecure ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-500"}`}
         >
           {isSecure ? <CheckCircle size={10} /> : <AlertTriangle size={10} />}
           {label}
         </div>
       )}
-      <pre className="p-5 text-[11px] text-accent-primary/80 leading-relaxed overflow-x-auto font-mono whitespace-pre-wrap bg-[#080809]">
+      <pre className="p-5 text-[11px] text-text-primary leading-relaxed overflow-x-auto font-mono whitespace-pre-wrap bg-bg-secondary border-t border-border-color">
         {code}
       </pre>
     </div>
@@ -604,7 +604,7 @@ const SecureComparison = React.memo<{
           <CheckCircle size={11} /> Secure Design
         </button>
       </div>
-      <div className="relative overflow-hidden rounded-xl border border-white/5 bg-[#080809] min-h-[160px]">
+      <div className="relative overflow-hidden rounded-xl border border-border-color bg-gray-900 min-h-[160px]">
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={showing}
@@ -643,10 +643,10 @@ const MindsetDiagram = React.memo<{ steps: string[] }>(({ steps }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`px-6 py-3 rounded-xl border font-orbitron font-black text-[10px] uppercase tracking-widest text-center min-w-[200px] shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-all hover:scale-105 ${
+            className={`px-6 py-3 rounded-xl border font-orbitron font-black text-[10px] uppercase tracking-widest text-center min-w-[200px] shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all hover:scale-105 ${
               i === steps.length - 1 
-                ? "bg-red-500/20 border-red-500/50 text-red-400 animate-pulse" 
-                : "bg-white/5 border-white/10 text-text-primary"
+                ? "bg-red-50 dark:bg-red-900/20 border-red-500/50 text-red-600 dark:text-red-400 animate-pulse" 
+                : "bg-bg-card border-border-color text-text-primary"
             }`}
           >
             {step}
@@ -668,17 +668,17 @@ const MindsetDiagram = React.memo<{ steps: string[] }>(({ steps }) => {
 
 const MappingTable = React.memo<{ data: { type: string; surface: string }[] }>(({ data }) => {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/5 bg-white/[0.02]">
+    <div className="overflow-hidden rounded-xl border border-border-color bg-bg-card">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-white/5 border-b border-white/5">
+          <tr className="bg-bg-secondary border-b border-border-color">
             <th className="px-5 py-3 font-orbitron font-black text-[9px] uppercase tracking-widest text-accent-primary">Website Type</th>
             <th className="px-5 py-3 font-orbitron font-black text-[9px] uppercase tracking-widest text-accent-primary">Possible Attack Surface</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-white/5">
+        <tbody className="divide-y divide-border-color">
           {data.map((item, i) => (
-            <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+            <tr key={i} className="hover:bg-bg-secondary transition-colors">
               <td className="px-5 py-4 font-mono text-[10px] text-text-primary font-bold">{item.type}</td>
               <td className="px-5 py-4 text-xs text-text-muted leading-relaxed">{item.surface}</td>
             </tr>
@@ -1735,7 +1735,7 @@ export const BlogPost: React.FC = () => {
                   )}
 
                   {displayDossier?.where_to_test?.mindset_diagram && (
-                    <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-4 overflow-hidden">
+                    <div className="bg-bg-primary border border-border-color rounded-2xl p-4 overflow-hidden">
                       <h4 className="font-orbitron font-black text-[9px] uppercase tracking-[0.2em] text-accent-primary mb-4 text-center">Pentester Mindset Workflow</h4>
                       <MindsetDiagram steps={displayDossier.where_to_test.mindset_diagram} />
                     </div>
@@ -1758,7 +1758,7 @@ export const BlogPost: React.FC = () => {
                           />
                           <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                             <span className="font-mono text-[8px] uppercase font-black text-red-400 block mb-1">Key Observation</span>
-                            <p className="text-[10px] text-red-200/80 italic font-mono leading-relaxed">
+                            <p className="text-[10px] text-red-500 italic font-mono leading-relaxed">
                               {displayDossier.where_to_test.practical_example.observation}
                             </p>
                           </div>
@@ -2029,7 +2029,7 @@ export const BlogPost: React.FC = () => {
                     />
                   </div>
 
-                  <div className="bg-[#111] border border-white/10 rounded-xl p-5 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                  <div className="bg-bg-secondary border border-border-color rounded-xl p-5">
                      <h4 className="font-orbitron font-black text-[11px] uppercase tracking-widest text-accent-primary mb-3">Mitigation Logic</h4>
                      <ul className="space-y-3">
                         <li className="flex items-start gap-3 text-sm text-text-muted">
@@ -2166,16 +2166,16 @@ export const BlogPost: React.FC = () => {
                 accent
                 hidden={explanationMode === 'beginner'}
               >
-                 <div className="bg-[#111] p-4 rounded-xl border border-white/10 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] space-y-4">
+                 <div className="bg-bg-secondary p-4 rounded-xl border border-border-color shadow-inner space-y-4">
                    <Prose text="This vulnerability executes fundamentally at the topmost layer of the OSI model, compromising the business logic built into the application." />
                    
                    <div className="grid grid-cols-1 md:grid-cols-7 gap-2">
                       {['L1 Physical', 'L2 Data Link', 'L3 Network', 'L4 Transport', 'L5 Session', 'L6 Presentation'].map((layer) => (
-                         <div key={layer} className="bg-white/5 border border-white/5 rounded-lg p-2 text-center text-text-muted/40 font-mono text-[8px] sm:text-[9px] flex items-center justify-center">
+                         <div key={layer} className="bg-bg-primary border border-border-color rounded-lg p-2 text-center text-text-muted font-bold font-mono text-[8px] sm:text-[9px] flex items-center justify-center">
                            <span className="-rotate-90 md:rotate-0 whitespace-nowrap">{layer}</span>
                          </div>
                       ))}
-                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-2 text-center text-red-400 font-mono font-black text-[10px] sm:text-xs flex items-center justify-center relative overflow-hidden">
+                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-2 text-center text-red-500 font-mono font-black text-[10px] sm:text-xs flex items-center justify-center relative overflow-hidden">
                          <motion.div 
                            className="absolute inset-0 bg-red-400/20"
                            animate={{ opacity: [0, 0.5, 0] }}
@@ -2195,25 +2195,25 @@ export const BlogPost: React.FC = () => {
                 hidden={explanationMode === 'beginner'}
               >
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                     <div className="bg-[#0a0a0c] border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-accent-primary/50 transition-colors">
-                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                     <div className="bg-bg-primary border border-border-color rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-accent-primary/50 transition-colors">
+                        <div className="w-12 h-12 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                            <span className="font-orbitron font-black text-xs text-text-primary">HTTP/S</span>
                         </div>
                         <h4 className="font-mono text-[10px] uppercase font-bold text-accent-primary mb-2 tracking-widest">Transport</h4>
                         <p className="text-[10px] sm:text-xs text-text-muted leading-relaxed">The attack payload transverses the network encrypted via TLS over standard HTTP verbs (GET, POST).</p>
                      </div>
-                     <div className="bg-[#0a0a0c] border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-red-500/50 transition-colors">
+                     <div className="bg-bg-primary border border-border-color rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-red-500/50 transition-colors">
                         <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                            <span className="font-orbitron font-black text-xs text-red-500">REST/GQL</span>
                         </div>
-                        <h4 className="font-mono text-[10px] uppercase font-bold text-red-400 mb-2 tracking-widest">Interpretation</h4>
+                        <h4 className="font-mono text-[10px] uppercase font-bold text-red-500 mb-2 tracking-widest">Interpretation</h4>
                         <p className="text-[10px] sm:text-xs text-text-muted leading-relaxed">APIs parse the manipulated request payload, trusting the structural format but executing it insecurely.</p>
                      </div>
-                     <div className="bg-[#0a0a0c] border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-green-500/50 transition-colors">
-                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                     <div className="bg-bg-primary border border-border-color rounded-xl p-4 flex flex-col items-center justify-center text-center group hover:border-green-500/50 transition-colors">
+                        <div className="w-12 h-12 rounded-full bg-bg-secondary border border-border-color flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                            <Database size={16} className="text-text-primary" />
                         </div>
-                        <h4 className="font-mono text-[10px] uppercase font-bold text-green-400 mb-2 tracking-widest">Persistence</h4>
+                        <h4 className="font-mono text-[10px] uppercase font-bold text-green-500 mb-2 tracking-widest">Persistence</h4>
                         <p className="text-[10px] sm:text-xs text-text-muted leading-relaxed">The database or executing script processes the malicious instruction due to missing authorization boundaries.</p>
                      </div>
                   </div>
@@ -2355,7 +2355,7 @@ export const BlogPost: React.FC = () => {
                   />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {displayDossier?.ptes_mapping?.map((item: any, i: number) => (
-                      <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-accent-primary/30 transition-colors group">
+                      <div key={i} className="p-4 rounded-xl bg-bg-secondary border border-border-color hover:border-accent-primary/30 transition-colors group">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="shrink-0 w-6 h-6 rounded-lg bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary font-mono text-[9px] font-black">
                             {String(i + 1).padStart(2, '0')}
@@ -2364,11 +2364,11 @@ export const BlogPost: React.FC = () => {
                         </div>
                         <div className="space-y-3 pl-9">
                           <div>
-                            <span className="font-mono text-[8px] text-text-muted/30 uppercase tracking-widest block mb-1">Simple Explanation</span>
+                            <span className="font-mono text-[8px] text-gray-500 dark:text-text-muted/50 font-bold uppercase tracking-widest block mb-1">Simple Explanation</span>
                             <p className="text-xs text-text-muted leading-relaxed">{item.simple}</p>
                           </div>
                           <div>
-                            <span className="font-mono text-[8px] text-text-muted/30 uppercase tracking-widest block mb-1 text-accent-primary/40">Technical Phase Detail</span>
+                            <span className="font-mono text-[8px] text-accent-primary/80 dark:text-accent-primary/50 font-bold uppercase tracking-widest block mb-1">Technical Phase Detail</span>
                             <p className="text-xs text-text-primary italic font-mono border-l-2 border-accent-primary/20 pl-3 py-1 bg-accent-primary/[0.02]">{item.technical}</p>
                           </div>
                         </div>
@@ -2389,16 +2389,16 @@ export const BlogPost: React.FC = () => {
                   <Prose text="Security verification according to OSSTMM identifies the specific failure points in the operational security logic and trust boundary enforcement." />
                   <div className="space-y-4">
                     {displayDossier?.osstmm_analysis?.map((item: any, i: number) => (
-                      <div key={i} className="p-5 rounded-xl bg-[#0a0a0c] border border-white/5 relative overflow-hidden group">
+                      <div key={i} className="p-5 rounded-xl bg-bg-primary border border-border-color relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-accent-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-accent-primary/10 transition-colors" />
                         <h4 className="font-orbitron font-black text-[11px] uppercase tracking-[0.2em] text-accent-primary mb-3 relative z-10">{item.principle}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-                           <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                              <span className="font-mono text-[8px] text-text-muted/40 uppercase tracking-widest block mb-2 font-black">Verification Focus</span>
+                           <div className="p-3 rounded-lg bg-bg-secondary border border-border-color">
+                              <span className="font-mono text-[8px] text-gray-500 dark:text-text-muted/50 uppercase tracking-widest block mb-2 font-black">Verification Focus</span>
                               <p className="text-xs text-text-muted leading-relaxed">{item.simple}</p>
                            </div>
                            <div className="p-3 rounded-lg bg-accent-primary/[0.02] border border-accent-primary/10">
-                              <span className="font-mono text-[8px] text-accent-primary/40 uppercase tracking-widest block mb-2 font-black">Strategic Remediation Logic</span>
+                              <span className="font-mono text-[8px] text-accent-primary/80 dark:text-accent-primary/50 uppercase tracking-widest block mb-2 font-black">Strategic Remediation Logic</span>
                               <p className="text-xs text-text-primary italic font-mono leading-relaxed">{item.technical}</p>
                            </div>
                         </div>

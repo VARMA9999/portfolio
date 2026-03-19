@@ -30,7 +30,7 @@ export const ProtocolMapping: React.FC<ProtocolProps> = ({ protocols }) => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-[10px] font-mono font-black text-accent-primary uppercase tracking-widest">{protocol}</span>
-                <span className="text-[8px] font-mono text-text-muted uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">PROTOCOL_LAYER</span>
+                <span className="text-[8px] font-mono text-text-muted font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">PROTOCOL_LAYER</span>
               </div>
             </motion.div>
             {i < protocols.length - 1 && (

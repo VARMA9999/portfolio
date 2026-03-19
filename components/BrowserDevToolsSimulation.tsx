@@ -73,9 +73,9 @@ export const BrowserDevToolsSimulation: React.FC<BrowserDevToolsProps> = ({
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#050506] overflow-hidden shadow-2xl my-8 font-mono">
+    <div className="rounded-2xl border border-border-color bg-bg-card overflow-hidden shadow-2xl my-8 font-mono">
       {/* DevTools Title Bar */}
-      <div className="bg-[#1a1a1c] border-b border-white/10 p-2 flex items-center justify-between">
+      <div className="bg-bg-secondary border-b border-border-color p-2 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-text-muted px-2">
             <MonitorSmartphone size={14} />
@@ -99,23 +99,23 @@ export const BrowserDevToolsSimulation: React.FC<BrowserDevToolsProps> = ({
         </div>
       </div>
 
-      <div className="flex bg-[#0a0a0c] min-h-[300px]">
+      <div className="flex bg-bg-primary min-h-[300px]">
         {/* Left Sidebar (Storage Types) */}
-        <div className="w-48 border-r border-white/5 p-2 hidden md:block select-none">
+        <div className="w-48 border-r border-border-color p-2 hidden md:block select-none">
           <div className="text-[10px] text-text-muted font-bold mb-2 pl-2">Storage</div>
           
-          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer ${type === 'localStorage' ? 'bg-accent-primary/10 text-accent-primary font-bold' : 'text-text-muted hover:bg-white/5'}`}>
+          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer ${type === 'localStorage' ? 'bg-accent-primary/10 text-accent-primary font-bold' : 'text-text-muted hover:bg-bg-secondary'}`}>
             <Database size={12} />
             Local Storage
           </div>
           <div className="pl-6 text-[10px] text-text-muted/60 mt-1 mb-2">https://target.com</div>
           
-          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer ${type === 'sessionStorage' ? 'bg-blue-500/10 text-blue-400 font-bold' : 'text-text-muted hover:bg-white/5'}`}>
+          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer ${type === 'sessionStorage' ? 'bg-blue-500/10 text-blue-400 font-bold' : 'text-text-muted hover:bg-bg-secondary'}`}>
             <Key size={12} />
             Session Storage
           </div>
           
-          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer mt-2 ${type === 'cookies' ? 'bg-yellow-500/10 text-yellow-500 font-bold' : 'text-text-muted hover:bg-white/5'}`}>
+          <div className={`flex items-center gap-2 text-[11px] p-1.5 rounded-lg cursor-pointer mt-2 ${type === 'cookies' ? 'bg-yellow-500/10 text-yellow-500 font-bold' : 'text-text-muted hover:bg-bg-secondary'}`}>
             <Cookie size={12} />
             Cookies
           </div>
@@ -124,20 +124,20 @@ export const BrowserDevToolsSimulation: React.FC<BrowserDevToolsProps> = ({
         {/* Right Content Area (Key/Value Table) */}
         <div className="flex-1 flex flex-col">
           {/* Table Toolbar */}
-          <div className="flex items-center justify-between p-2 border-b border-white/5 bg-[#111]">
+          <div className="flex items-center justify-between p-2 border-b border-border-color bg-bg-secondary">
             <div className="flex items-center gap-2 text-text-muted">
               {getIcon()}
               <span className="text-[10px] sm:text-xs">https://target.com</span>
             </div>
-            <div className="flex items-center bg-[#050506] border border-white/10 rounded px-2 py-1">
+            <div className="flex items-center bg-bg-primary border border-border-color rounded px-2 py-1">
               <Search size={10} className="text-text-muted mr-2" />
               <div className="text-[9px] text-text-muted/50 w-24">Filter</div>
             </div>
           </div>
 
           {/* Table Headers */}
-          <div className="grid grid-cols-12 gap-2 p-2 border-b border-white/10 text-[10px] text-text-muted font-bold bg-[#111]">
-            <div className="col-span-4 border-r border-white/10">Key</div>
+          <div className="grid grid-cols-12 gap-2 p-2 border-b border-border-color text-[10px] text-text-muted font-bold bg-bg-secondary">
+            <div className="col-span-4 border-r border-border-color">Key</div>
             <div className="col-span-8">Value</div>
           </div>
 
@@ -155,7 +155,7 @@ export const BrowserDevToolsSimulation: React.FC<BrowserDevToolsProps> = ({
                  {step.items.map((item, i) => (
                    <div 
                      key={i} 
-                     className={`grid grid-cols-12 gap-2 p-2 border-b border-white/5 text-[10px] sm:text-[11px] hover:bg-white/5 transition-colors relative overflow-hidden`}
+                     className={`grid grid-cols-12 gap-2 p-2 border-b border-border-color text-[10px] sm:text-[11px] hover:bg-bg-secondary transition-colors relative overflow-hidden`}
                    >
                      {/* Highlight effect for modified items */}
                      {item.isModified && (
@@ -210,7 +210,7 @@ export const BrowserDevToolsSimulation: React.FC<BrowserDevToolsProps> = ({
       </div>
 
       {/* Explanation Footer */}
-      <div className="bg-black/40 border-t border-white/5 p-4 relative z-20">
+      <div className="bg-bg-secondary border-t border-border-color p-4 relative z-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}

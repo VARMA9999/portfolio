@@ -98,9 +98,9 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#050506] overflow-hidden shadow-2xl my-8">
+    <div className="rounded-2xl border border-border-color bg-bg-primary overflow-hidden shadow-xl my-8">
       {/* Header bar */}
-      <div className="bg-white/5 border-b border-white/10 p-3 flex items-center justify-between">
+      <div className="bg-bg-secondary border-b border-border-color p-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ShieldX size={16} className="text-orange-500" />
           <span className="font-orbitron text-xs font-black uppercase tracking-widest text-text-primary">
@@ -110,7 +110,7 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
         <div className="flex items-center gap-2">
           <button 
             onClick={() => setAutoPlay(!autoPlay)}
-            className={`p-1.5 rounded-md transition-colors ${autoPlay ? 'bg-accent-primary/20 text-accent-primary' : 'bg-white/10 text-text-muted hover:text-white'}`}
+            className={`p-1.5 rounded-md transition-colors ${autoPlay ? 'bg-accent-primary/20 text-accent-primary' : 'bg-bg-secondary text-text-muted hover:text-text-primary'}`}
             title={autoPlay ? "Pause Simulation" : "Play Simulation"}
           >
             {autoPlay ? <RefreshCw size={12} className="animate-spin-slow" /> : <Play size={12} />}
@@ -132,7 +132,7 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
             )}
           </div>
           
-          <div className="bg-[#0a0a0c] border border-white/5 rounded-xl p-4 flex-grow relative overflow-hidden group">
+          <div className="bg-bg-primary border border-border-color rounded-xl p-4 flex-grow relative overflow-hidden group">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500/50 to-red-500/50 opacity-50" />
             
             <AnimatePresence mode="wait">
@@ -166,7 +166,7 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
             )}
           </div>
           
-          <div className={`bg-[#0a0a0c] border ${showResponse ? 'border-red-500/30 shadow-[inset_0_0_20px_rgba(239,68,68,0.05)]' : 'border-white/5'} rounded-xl p-4 flex-grow relative transition-all duration-500 min-h-[150px]`}>
+          <div className={`bg-bg-primary border ${showResponse ? 'border-red-500/30 shadow-[inset_0_0_20px_rgba(239,68,68,0.05)]' : 'border-border-color'} rounded-xl p-4 flex-grow relative transition-all duration-500 min-h-[150px]`}>
             {!showResponse ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center opacity-30">
                  <RefreshCw size={24} className={isModifying ? 'animate-spin' : ''} />
@@ -196,7 +196,7 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
       </div>
 
       {/* Explanation Footer */}
-      <div className="bg-black/40 border-t border-white/5 p-4 md:py-3 md:px-6">
+      <div className="bg-bg-secondary border-t border-border-color p-4 md:py-3 md:px-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep + (isModifying ? '-mod' : '') + (showResponse ? '-res' : '')}

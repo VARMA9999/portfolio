@@ -33,7 +33,7 @@ export const OSIMapping: React.FC<OSIProps> = ({ primaryLayer, description }) =>
               className={`p-4 rounded-xl border flex items-center justify-between transition-all duration-500 ${
                 layer.num === primaryLayer 
                 ? 'bg-accent-primary/10 border-accent-primary shadow-[0_0_20px_rgba(var(--accent-primary-rgb),0.1)]' 
-                : 'bg-white/[0.01] border-border-color opacity-30 grayscale'
+                : 'bg-white/[0.01] border-border-color opacity-60 grayscale'
               }`}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}

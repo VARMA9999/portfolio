@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { Shield, Lock, Cpu, Globe, FileText, ArrowRight, Linkedin, Github } from 'lucide-react';
-import { FestivalEngine } from './FestivalEngine';
+
 import { blogPosts } from '../data/blogPosts';
 
 import { SEO } from './SEO';
@@ -65,7 +65,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection = 'home'
       </main>
 
       <Footer />
-      <FestivalEngine />
+
     </div>
   );
 };
