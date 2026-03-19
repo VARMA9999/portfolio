@@ -1,4 +1,4 @@
-export type AnalyticsEvent = 
+export type AnalyticsEvent =
   | 'voice_play'
   | 'voice_pause'
   | 'background_listen_enabled'
