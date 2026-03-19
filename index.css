@@ -1030,3 +1030,174 @@ button,
     max-width: 960px;
   }
 }
+
+/* ─────────────────────────────────────────────
+   MOBILE RESPONSIVENESS FIXES
+   Strictly mobile-only. Desktop layout is unchanged.
+───────────────────────────────────────────── */
+
+/* 1. GLOBAL OVERFLOW GUARD */
+* {
+  max-width: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2. OSI LAYER — remove rotation on mobile */
+@media (max-width: 768px) {
+  .osi-layer,
+  [class*="osi-layer"],
+  [class*="writing-mode"],
+  [style*="writing-mode"],
+  [style*="rotate("] {
+    transform: none !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+  }
+
+  .osi-container,
+  [class*="osi-container"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}
+
+/* 3. PREVENT TEXT OVERFLOW */
+@media (max-width: 768px) {
+  p, h1, h2, h3, h4, h5, h6, span, label {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Code blocks — scroll horizontally, don't overflow */
+  pre, code {
+    overflow-x: auto;
+    white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
+    max-width: 100%;
+  }
+
+  /* Tables — horizontal scroll instead of overflow */
+  table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+}
+
+/* 4. FLOATING BUTTON — reposition for mobile */
+@media (max-width: 768px) {
+  .floating-button,
+  [class*="floating-button"],
+  [class*="fixed bottom"] {
+    bottom: 16px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  /* Report Issue button specifically */
+  .report-issue-btn,
+  [class*="report-issue"] {
+    bottom: 72px !important;
+    right: 12px !important;
+  }
+}
+
+/* 5. FLEXBOX COLUMN CONVERSION — make row layouts stack on mobile */
+@media (max-width: 640px) {
+  .mobile-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Blog post header meta info */
+  .blog-meta-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Voice narration controls */
+  .narration-controls {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+/* 6. FONT SIZE ADJUSTMENTS  */
+@media (max-width: 480px) {
+  /* Blog section headers (Orbitron font sections) */
+  .font-orbitron {
+    letter-spacing: 0.02em !important;
+  }
+
+  /* Section number badges */
+  .font-mono.text-\[10px\] {
+    font-size: 9px !important;
+  }
+
+  /* Blog section titles in Section component */
+  h2.font-orbitron {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem) !important;
+  }
+}
+
+/* 7. BLOG POST SECTIONS — prevent inner content overflow */
+@media (max-width: 768px) {
+  /* Section content containers */
+  .blog-section-content,
+  .rounded-2xl,
+  .rounded-xl {
+    max-width: 100% !important;
+    overflow-x: hidden;
+  }
+
+  /* Comparison grid — stack columns on mobile */
+  .comparison-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Attack flow arrows — make vertical */
+  .attack-flow-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* 8. AD SLOT — prevent shift on mobile */
+@media (max-width: 768px) {
+  .ad-slot {
+    margin: 1.5rem 0 !important;
+    overflow: hidden;
+  }
+
+  .adsbygoogle {
+    min-height: 60px !important;
+  }
+}
+
+/* 9. NAVIGATION — ensure no overflow on mobile */
+@media (max-width: 768px) {
+  nav {
+    overflow-x: hidden;
+  }
+}
+
+/* 10. SMOOTH SCROLLING — locked to vertical only on mobile */
+@media (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+}

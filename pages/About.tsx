@@ -37,12 +37,13 @@ export const About: React.FC = () => {
               </div>
 
               {/* Resume Buttons */}
-              <div className="pt-6 border-t border-border-color mt-2 flex flex-wrap gap-3">
+              <div className="pt-6 border-t border-border-color mt-2 flex flex-col sm:flex-row flex-wrap gap-3">
+                {/* VIEW: Use /preview — works on all devices including mobile */}
                 <a
-                  href="https://drive.google.com/file/d/1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ/view"
+                  href="https://drive.google.com/file/d/1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ/preview"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-accent-primary border border-accent-primary/30 bg-accent-primary/5 hover:bg-accent-primary/10 hover:border-accent-primary/60 transition-all"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-accent-primary border border-accent-primary/30 bg-accent-primary/5 hover:bg-accent-primary/10 hover:border-accent-primary/60 transition-all"
                   onClick={() => {
                     if ((window as any).gtag) (window as any).gtag('event', 'resume_view', { event_category: 'portfolio' });
                   }}
@@ -50,16 +51,18 @@ export const About: React.FC = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                   View Resume
                 </a>
+                {/* DOWNLOAD: Direct download without redirect */}
                 <a
                   href="https://drive.google.com/uc?export=download&id=1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ"
-                  download
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-black bg-accent-primary hover:opacity-90 transition-all shadow-[0_0_20px_rgba(var(--accent-primary-rgb),0.3)]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-black bg-accent-primary hover:opacity-90 transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)]"
                   onClick={() => {
                     if ((window as any).gtag) (window as any).gtag('event', 'resume_download', { event_category: 'portfolio' });
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download Resume
+                  Download Resume (PDF)
                 </a>
               </div>
             </div>
