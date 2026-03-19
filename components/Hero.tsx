@@ -8,7 +8,7 @@ import { CyberBackground } from './CyberBackground';
 /* ── Animated hero profile photo — CSS float (zero rAF cost) ── */
 const CyberShieldGraphic: React.FC = () => (
   <div
-    className="hero-float relative flex items-center justify-center w-[460px] h-[510px] sm:w-[560px] sm:h-[620px] md:w-[620px] md:h-[680px] lg:w-[720px] lg:h-[790px] xl:w-[800px] xl:h-[880px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
+    className="hero-float relative flex items-center justify-center w-[400px] h-[440px] sm:w-[480px] sm:h-[520px] md:w-[500px] md:h-[560px] lg:w-[580px] lg:h-[650px] xl:w-[640px] xl:h-[720px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
   >
     {/* Ambient glow behind subject */}
     <div
@@ -79,7 +79,7 @@ export const Hero: React.FC = () => {
           style={{ background: 'linear-gradient(90deg, transparent, var(--accent-glow-subtle), transparent)', opacity: 0.3 }} />
 
         {/* Hero content container */}
-        <div className="container mx-auto max-w-7xl px-[clamp(2rem,6vw,5rem)] lg:px-[clamp(4rem,8vw,8rem)] xl:px-[clamp(6rem,10vw,12rem)] relative z-10 w-full">
+        <div className="container mx-auto max-w-7xl px-4 relative z-10 w-full">
           <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
             {/* Main Content Area (left) */}
 
