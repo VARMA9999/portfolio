@@ -7,35 +7,33 @@ import { CyberBackground } from './CyberBackground';
 
 /* ── Animated hero profile photo — CSS float (zero rAF cost) ── */
 const CyberShieldGraphic: React.FC = () => (
-  <div
-    className="hero-float relative flex items-center justify-center w-[450px] h-[500px] sm:w-[540px] sm:h-[600px] md:w-[600px] md:h-[680px] lg:w-[680px] lg:h-[780px] xl:w-[760px] xl:h-[860px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
-  >
+  <div className="hero-float relative w-full h-full">
     {/* Ambient glow behind subject */}
     <div
       className="absolute inset-0 pointer-events-none"
       style={{
-        background: 'radial-gradient(ellipse at 50% 60%, var(--accent-glow-subtle) 0%, transparent 70%)',
-        filter: 'blur(30px)',
+        background: 'radial-gradient(ellipse at 50% 50%, var(--accent-glow-subtle) 0%, transparent 70%)',
+        filter: 'blur(40px)',
         zIndex: 0,
       }}
     />
-    {/* Profile image — adaptive blend mode per theme */}
+    {/* Profile image — spans full hero height, right side */}
     <img
       src="/profile-refined.png"
       alt="G. Manikanta Varma"
       loading="eager"
       className="profile-blend-img"
       style={{
-        position: 'relative',
+        position: 'absolute',
+        inset: 0,
         zIndex: 1,
         width: '100%',
         height: '100%',
         objectFit: 'contain',
-        objectPosition: 'center bottom',
-        /* Soft bottom fade so portrait dissolves into page */
-        maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-        filter: 'drop-shadow(0 8px 32px rgba(139, 92, 246, 0.35)) brightness(1.02)',
+        objectPosition: 'center top',
+        maskImage: 'linear-gradient(to bottom, black 82%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 82%, transparent 100%)',
+        filter: 'drop-shadow(0 8px 40px rgba(139, 92, 246, 0.45)) brightness(1.04)',
       }}
     />
   </div>
@@ -53,7 +51,7 @@ export const Hero: React.FC = () => {
   useEffect(() => {
     const roleInterval = setInterval(() => {
       setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000); // Change role every 3 seconds
+    }, 3000);
     return () => clearInterval(roleInterval);
   }, [roles.length]);
 
@@ -78,198 +76,192 @@ export const Hero: React.FC = () => {
         <div className="absolute top-2/3 left-0 right-0 h-px pointer-events-none z-[1]"
           style={{ background: 'linear-gradient(90deg, transparent, var(--accent-glow-subtle), transparent)', opacity: 0.3 }} />
 
-        {/* Hero content container */}
+        {/* ── Desktop: profile image absolutely fills right 42% of hero, top to bottom ── */}
+        <div
+          className="hidden md:block absolute z-[5] pointer-events-none"
+          style={{ top: '100px', bottom: 0, right: 0, width: '42%' }}
+        >
+          <CyberShieldGraphic />
+        </div>
+
+        {/* Hero content container — left text content only */}
         <div className="container-progressive relative z-10 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
-            {/* Main Content Area (left) */}
-
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="space-y-8 relative z-20 md:col-span-7 pr-0 md:pr-6 lg:pr-12 md:pl-8 lg:pl-12 xl:pl-16"
-
-            >
-              {/* Name block */}
-              <div className="space-y-5">
-                <div className="relative inline-block w-full">
-                  <h1 className="font-orbitron font-[800] tracking-[0.5px] leading-[1.2] uppercase
-                    text-[clamp(1.2rem,4.5vw,6rem)] whitespace-nowrap">
-
-                    <span className="text-text-primary">G. MANIKANTA </span>
-                    <span className="text-accent-primary">VARMA</span>
-                  </h1>
-                  {/* Accent underline */}
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0
-                    w-3/4 md:w-full h-[2px]"
-                    style={{ background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-glow))', opacity: 0.8 }} />
-                </div>
-
-                {/* Rotating Roles */}
-                <div className="h-6 sm:h-8 pt-2 overflow-hidden flex justify-center md:justify-start">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentRoleIndex}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-text-muted font-mono text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase"
-                    >
-                      {roles[currentRoleIndex]}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* Credential tags */}
-                <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
-                  {['CEH MASTER V12', 'NCIIPC CONTRIBUTOR', 'IBR ACHIEVER'].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-xs font-mono font-bold
-                        uppercase tracking-[0.18em] transition-all duration-200"
-                      style={{
-                        border: '1px solid var(--border-color)',
-                        background: 'var(--accent-glow-subtle)',
-                        color: 'var(--accent-primary)',
-                      }}
-                      onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--border-hover)')}
-                      onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="space-y-8 relative z-20 w-full md:w-7/12 md:pl-8 lg:pl-12 xl:pl-16"
+          >
+            {/* Name block */}
+            <div className="space-y-5">
+              <div className="relative inline-block w-full">
+                <h1 className="font-orbitron font-[800] tracking-[0.5px] leading-[1.2] uppercase
+                  text-[clamp(1.2rem,4.5vw,6rem)] whitespace-nowrap">
+                  <span className="text-text-primary">G. MANIKANTA </span>
+                  <span className="text-accent-primary">VARMA</span>
+                </h1>
+                {/* Accent underline */}
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0
+                  w-3/4 md:w-full h-[2px]"
+                  style={{ background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-glow))', opacity: 0.8 }} />
               </div>
 
-              {/* Subtext */}
-              <p className="text-text-muted text-base md:text-lg leading-[1.7]
-                max-w-[55ch] font-medium text-center md:text-left mx-auto md:mx-0">
-                Cybersecurity Analyst specializing in{' '}
-                <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>
-                  Web Application Security and Vulnerability Assessment & Penetration Testing (VAPT).
-                </span>
-                {' '}Focused on OWASP Top 10 testing, vulnerability disclosure, and practical security research.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
-                <motion.a
-                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  href="/Manikanta_Varma_Resume.pdf"
-                  download="G_Manikanta_Varma_Resume.pdf"
-                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs
-                    uppercase tracking-[0.18em] transition-all rounded-xl flex items-center
-                    justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
-                  style={{
-                    background: 'var(--accent-primary)',
-                    color: '#fff',
-                    boxShadow: '0 0 20px var(--accent-glow)',
-                  }}
-                  aria-label="Download CV"
-                >
-                  <Download size={16} aria-hidden="true" />
-                  <span>DOWNLOAD CV</span>
-                </motion.a>
- 
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  href="/Manikanta_Varma_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
-                    transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
-                  style={{
-                    background: 'transparent',
-                    border: '1px solid var(--border-color)',
-                    color: 'var(--accent-primary)',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = 'var(--accent-glow-subtle)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-hover)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.background = 'transparent';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-color)';
-                  }}
-                  aria-label="View resume in new tab"
-                >
-                  <Terminal size={16} aria-hidden="true" />
-                  <span>VIEW RESUME</span>
-                </motion.a>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
-                    transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
-                  style={{
-                    background: 'transparent',
-                    border: '1px solid var(--border-color)',
-                    color: 'var(--accent-primary)',
-                  }}
-                  aria-label="Scroll to contact section"
-                >
-                  <MessageSquare size={16} aria-hidden="true" />
-                  <span>CONTACT ME</span>
-                </motion.button>
-
-                {/* Blog CTA */}
-                {(() => {
-                  const MotionLink = motion(Link as any);
-                  return (
-                    <MotionLink
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.97 }}
-                      to="/blog"
-                      className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
-                        transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
-                      style={{
-                        background: 'transparent',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--accent-primary)',
-                      }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.background = 'var(--accent-glow-subtle)';
-                        (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-hover)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.background = 'transparent';
-                        (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-color)';
-                      }}
-                      aria-label="Open blog"
-                    >
-                      <BookOpen size={16} aria-hidden="true" />
-                      <span>BLOG</span>
-                    </MotionLink>
-                  );
-                })()}
+              {/* Rotating Roles */}
+              <div className="h-6 sm:h-8 pt-2 overflow-hidden flex justify-center md:justify-start">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentRoleIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-text-muted font-mono text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase"
+                  >
+                    {roles[currentRoleIndex]}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </motion.div>
 
-            {/* Right Content (profile image) */}
-            <div className="hidden md:flex items-center md:col-span-5 justify-end">
-              <div className="transform md:translate-x-8 lg:translate-x-12 xl:translate-x-20">
-                <CyberShieldGraphic />
+              {/* Credential tags */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
+                {['CEH MASTER V12', 'NCIIPC CONTRIBUTOR', 'IBR ACHIEVER'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-xs font-mono font-bold
+                      uppercase tracking-[0.18em] transition-all duration-200"
+                    style={{
+                      border: '1px solid var(--border-color)',
+                      background: 'var(--accent-glow-subtle)',
+                      color: 'var(--accent-primary)',
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--border-hover)')}
+                    onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Mobile Profile Display (Inline) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="md:hidden flex justify-center w-full relative z-0 -mt-16 sm:-mt-20"
-            >
-              <CyberShieldGraphic />
-            </motion.div>
-          </div>
+            {/* Subtext */}
+            <p className="text-text-muted text-base md:text-lg leading-[1.7]
+              max-w-[55ch] font-medium text-center md:text-left mx-auto md:mx-0">
+              Cybersecurity Analyst specializing in{' '}
+              <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>
+                Web Application Security and Vulnerability Assessment &amp; Penetration Testing (VAPT).
+              </span>
+              {' '}Focused on OWASP Top 10 testing, vulnerability disclosure, and practical security research.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                href="/Manikanta_Varma_Resume.pdf"
+                download="G_Manikanta_Varma_Resume.pdf"
+                className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs
+                  uppercase tracking-[0.18em] transition-all rounded-xl flex items-center
+                  justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
+                style={{
+                  background: 'var(--accent-primary)',
+                  color: '#fff',
+                  boxShadow: '0 0 20px var(--accent-glow)',
+                }}
+                aria-label="Download CV"
+              >
+                <Download size={16} aria-hidden="true" />
+                <span>DOWNLOAD CV</span>
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                href="/Manikanta_Varma_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                  transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--accent-primary)',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = 'var(--accent-glow-subtle)';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-hover)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = 'transparent';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-color)';
+                }}
+                aria-label="View resume in new tab"
+              >
+                <Terminal size={16} aria-hidden="true" />
+                <span>VIEW RESUME</span>
+              </motion.a>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                  transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--accent-primary)',
+                }}
+                aria-label="Scroll to contact section"
+              >
+                <MessageSquare size={16} aria-hidden="true" />
+                <span>CONTACT ME</span>
+              </motion.button>
+
+              {/* Blog CTA */}
+              {(() => {
+                const MotionLink = motion(Link as any);
+                return (
+                  <MotionLink
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    to="/blog"
+                    className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                      transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
+                    style={{
+                      background: 'transparent',
+                      border: '1px solid var(--border-color)',
+                      color: 'var(--accent-primary)',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'var(--accent-glow-subtle)';
+                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-hover)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'transparent';
+                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-color)';
+                    }}
+                    aria-label="Open blog"
+                  >
+                    <BookOpen size={16} aria-hidden="true" />
+                    <span>BLOG</span>
+                  </MotionLink>
+                );
+              })()}
+            </div>
+          </motion.div>
         </div>
 
-        {/* Desktop background graphic removed to avoid duplicate profile image; ambient glow remains above. */}
+        {/* Mobile Profile Display (Inline) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="md:hidden flex justify-center w-full relative z-0 -mt-4"
+          style={{ height: '55vw', minHeight: '280px', maxHeight: '480px' }}
+        >
+          <CyberShieldGraphic />
+        </motion.div>
 
       </div>
   );
