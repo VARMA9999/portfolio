@@ -57,6 +57,47 @@ export const SEO: React.FC<SEOProps> = ({ title, description, image, article, ca
       ogTag.setAttribute('content', tag.content);
     });
 
+    // JSON-LD Structured Data
+    let schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(schemaScript);
+    }
+    
+    if (article) {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": finalCanonical
+        },
+        "headline": finalTitle,
+        "description": metaDescription,
+        "image": `${siteUrl}${image || '/profile-refined.png'}`,
+        "author": {
+          "@type": "Person",
+          "name": "Mani Varma",
+          "url": siteUrl
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mani Varma Cybersecurity"
+        }
+      };
+      schemaScript.textContent = JSON.stringify(schema);
+    } else {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Mani Varma | Cybersecurity Research",
+        "url": siteUrl,
+        "description": metaDescription
+      };
+      schemaScript.textContent = JSON.stringify(schema);
+    }
+
   }, [title, description, image, article, canonical, pathname]);
 
   return null;

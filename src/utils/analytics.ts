@@ -15,10 +15,11 @@ export interface AdBlockResult {
 /**
  * Tracks custom engagement events
  */
-export const trackEvent = (event: AnalyticsEvent, metadata: Record<string, any> = {}) => {
+export const trackEvent = (event: AnalyticsEvent | string, metadata: Record<string, any> = {}) => {
   console.log(`[Analytics] Event: ${event}`, metadata);
-  // In a real environment, this would call Firebase Analytics or similar
-  // Example: logEvent(analytics, event, metadata);
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', event, metadata);
+  }
 };
 
 /**
@@ -27,6 +28,13 @@ export const trackEvent = (event: AnalyticsEvent, metadata: Record<string, any> 
 export const pingEngagement = (articleId: string, section: string | number) => {
   const timestamp = new Date().toISOString();
   console.log(`[Analytics] Ping: ${articleId} | Section: ${section} | Time: ${timestamp}`);
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'engagement_ping', {
+      article_id: articleId,
+      section: section,
+      timestamp: timestamp
+    });
+  }
 };
 
 /**

@@ -35,6 +35,33 @@ export const About: React.FC = () => {
                   This website serves as a dedicated knowledge repository for advanced cybersecurity research. My mission is to publish in-depth vulnerability analysis, architectural risk models (like BAC and IDOR), and educational security learning content to help the global developer community build more resilient software ecosystems.
                 </p>
               </div>
+
+              {/* Resume Buttons */}
+              <div className="pt-6 border-t border-border-color mt-2 flex flex-wrap gap-3">
+                <a
+                  href="https://drive.google.com/file/d/1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-accent-primary border border-accent-primary/30 bg-accent-primary/5 hover:bg-accent-primary/10 hover:border-accent-primary/60 transition-all"
+                  onClick={() => {
+                    if ((window as any).gtag) (window as any).gtag('event', 'resume_view', { event_category: 'portfolio' });
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  View Resume
+                </a>
+                <a
+                  href="https://drive.google.com/uc?export=download&id=1YaNxcLwMoInBADwMBoBE_dquYQqFRuKQ"
+                  download
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-black bg-accent-primary hover:opacity-90 transition-all shadow-[0_0_20px_rgba(var(--accent-primary-rgb),0.3)]"
+                  onClick={() => {
+                    if ((window as any).gtag) (window as any).gtag('event', 'resume_download', { event_category: 'portfolio' });
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download Resume
+                </a>
+              </div>
             </div>
             <div className="p-8 space-y-8 border border-border-color rounded-3xl"
               style={{ background: 'var(--bg-card)' }}>

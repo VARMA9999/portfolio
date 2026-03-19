@@ -60,6 +60,7 @@ import {
 } from "../components/AnimatedDiagrams";
 import { translateDossier, translateText, batchTranslate, translateObject, preloadTranslationCache, getCachedTranslation } from "../src/utils/translate";
 import { VoiceNarration } from "../components/VoiceNarration";
+import { AdSlot } from "../components/AdSlot";
 import { useLanguage } from "../src/context/LanguageContext";
 import { InlineLanguageSelector } from "../components/InlineLanguageSelector";
 import { BurpSimulation } from "../components/BurpSimulation";
@@ -1639,6 +1640,9 @@ export const BlogPost: React.FC = () => {
                 />
               </Section>
 
+              <AdSlot />
+
+
               <Section
                 id="introduction"
                 num="02"
@@ -1654,6 +1658,9 @@ export const BlogPost: React.FC = () => {
                   activeCharIndex={activeCharIndex}
                 />
               </Section>
+
+              <AdSlot />
+
 
               <Section
                 id="simple-explanation"
@@ -1702,6 +1709,9 @@ export const BlogPost: React.FC = () => {
                   activeCharIndex={activeCharIndex}
                 />
               </Section>
+
+              <AdSlot />
+
 
               <Section 
                 id="where-to-test"
@@ -2690,6 +2700,9 @@ export const BlogPost: React.FC = () => {
                 </div>
               </Section>
 
+              <AdSlot />
+
+
               <Section
                 id="osi-model-layer-mapping"
                 num="22"
@@ -2805,6 +2818,8 @@ export const BlogPost: React.FC = () => {
                   ]}
                 />
               </Section>
+              
+              <AdSlot />
 
               <Section
                 id="strategic-conclusion"
@@ -2930,6 +2945,8 @@ export const BlogPost: React.FC = () => {
               </div>
             </section>
           )}
+          
+          <AdSlot />
 
           {/* 11. RESEARCH FEEDBACK (INLINE) */}
           <ResearchFeedbackChatbot 

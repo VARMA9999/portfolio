@@ -54,6 +54,8 @@ const ScrollToTop = () => {
 
 const PageTracker = () => {
   const location = useLocation();
+
+  // Page view tracking on every route change
   useEffect(() => {
     if (typeof (window as any).gtag === 'function') {
       (window as any).gtag('config', 'G-PPFJ77F37G', {
@@ -61,6 +63,45 @@ const PageTracker = () => {
       });
     }
   }, [location]);
+
+  // Scroll depth tracking — fires at 25, 50, 75, 100%
+  useEffect(() => {
+    const milestones = [25, 50, 75, 100];
+    const fired = new Set<number>();
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      const pct = Math.round((scrolled / total) * 100);
+
+      milestones.forEach(m => {
+        if (pct >= m && !fired.has(m)) {
+          fired.add(m);
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: `${m}%`,
+              depth_percent: m,
+              page_path: location.pathname
+            });
+          }
+          // At 100%, fire blog read completion if on blog post
+          if (m === 100 && location.pathname.startsWith('/blog/')) {
+            if (typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'blog_read_complete', {
+                event_category: 'engagement',
+                page_path: location.pathname
+              });
+            }
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
+
   return null;
 };
 
