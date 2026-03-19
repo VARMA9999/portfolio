@@ -65,7 +65,7 @@ const BackgroundEffects = () => {
 export const ProfessionalMission: React.FC = () => {
     return (
         <div id="mission" className="py-20 relative overflow-hidden">
-            <div className="container mx-auto px-6 max-w-7xl">
+            <div className="container-progressive">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
