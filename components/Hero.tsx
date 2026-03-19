@@ -8,7 +8,7 @@ import { CyberBackground } from './CyberBackground';
 /* ── Animated hero profile photo — CSS float (zero rAF cost) ── */
 const CyberShieldGraphic: React.FC = () => (
   <div
-    className="hero-float relative flex items-center justify-center w-[280px] h-[320px] sm:w-[360px] sm:h-[400px] md:w-[420px] md:h-[480px] lg:w-[480px] lg:h-[540px] xl:w-[560px] xl:h-[620px] max-w-full flex-shrink-0"
+    className="hero-float relative flex items-center justify-center w-[400px] h-[440px] sm:w-[480px] sm:h-[520px] md:w-[500px] md:h-[560px] lg:w-[580px] lg:h-[650px] xl:w-[640px] xl:h-[720px] max-w-full transform -translate-y-2 md:-translate-y-12 lg:-translate-y-20 xl:-translate-y-28"
   >
     {/* Ambient glow behind subject */}
     <div
@@ -80,26 +80,28 @@ export const Hero: React.FC = () => {
 
         {/* Hero content container */}
         <div className="container mx-auto max-w-7xl px-4 relative z-10 w-full">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 lg:gap-16 xl:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
             {/* Main Content Area (left) */}
 
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="space-y-6 md:space-y-8 relative z-20 flex-1 max-w-xl xl:max-w-2xl flex flex-col items-center md:items-start text-center md:text-left"
+              className="space-y-8 relative z-20 md:col-span-7 pr-0 md:pr-6 lg:pr-12 md:pl-8 lg:pl-12 xl:pl-16"
+
             >
               {/* Name block */}
-              <div className="space-y-5 w-full">
+              <div className="space-y-5">
                 <div className="relative inline-block w-full">
                   <h1 className="font-orbitron font-[800] tracking-[0.5px] leading-[1.2] uppercase
-                    text-[clamp(1.5rem,3.5vw+1rem,4.5rem)] whitespace-nowrap">
+                    text-[clamp(1.2rem,4.5vw,6rem)] whitespace-nowrap">
+
                     <span className="text-text-primary">G. MANIKANTA </span>
                     <span className="text-accent-primary">VARMA</span>
                   </h1>
                   {/* Accent underline */}
                   <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0
-                    w-[80%] md:w-full h-[2px]"
+                    w-3/4 md:w-full h-[2px]"
                     style={{ background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-glow))', opacity: 0.8 }} />
                 </div>
 
@@ -141,8 +143,8 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Subtext */}
-              <p className="text-text-muted text-sm sm:text-base md:text-lg leading-[1.7]
-                w-full font-medium">
+              <p className="text-text-muted text-base md:text-lg leading-[1.7]
+                max-w-[55ch] font-medium text-center md:text-left mx-auto md:mx-0">
                 Cybersecurity Analyst specializing in{' '}
                 <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>
                   Web Application Security and Vulnerability Assessment & Penetration Testing (VAPT).
@@ -151,15 +153,15 @@ export const Hero: React.FC = () => {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 pt-4 sm:pt-2 w-full">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
                 <motion.a
                    whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   href="/Manikanta_Varma_Resume.pdf"
                   download="G_Manikanta_Varma_Resume.pdf"
-                  className="px-4 py-3 sm:px-6 sm:py-3.5 font-orbitron font-bold text-[0.6rem] sm:text-[0.65rem] md:text-xs
+                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs
                     uppercase tracking-[0.18em] transition-all rounded-xl flex items-center
-                    justify-center gap-2 flex-grow sm:flex-none"
+                    justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
                   style={{
                     background: 'var(--accent-primary)',
                     color: '#fff',
@@ -170,15 +172,15 @@ export const Hero: React.FC = () => {
                   <Download size={16} aria-hidden="true" />
                   <span>DOWNLOAD CV</span>
                 </motion.a>
-
+ 
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   href="/Manikanta_Varma_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-3 sm:px-6 sm:py-3.5 font-orbitron font-bold text-[0.6rem] sm:text-[0.65rem] md:text-xs uppercase tracking-[0.18em]
-                    transition-all rounded-xl flex items-center justify-center gap-2 flex-grow sm:flex-none"
+                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                    transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
                   style={{
                     background: 'transparent',
                     border: '1px solid var(--border-color)',
@@ -202,8 +204,8 @@ export const Hero: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-4 py-3 sm:px-6 sm:py-3.5 font-orbitron font-bold text-[0.6rem] sm:text-[0.65rem] md:text-xs uppercase tracking-[0.18em]
-                    transition-all rounded-xl flex items-center justify-center gap-2 flex-grow sm:flex-none"
+                  className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                    transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
                   style={{
                     background: 'transparent',
                     border: '1px solid var(--border-color)',
@@ -223,8 +225,8 @@ export const Hero: React.FC = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.97 }}
                       to="/blog"
-                      className="px-4 py-3 sm:px-6 sm:py-3.5 font-orbitron font-bold text-[0.6rem] sm:text-[0.65rem] md:text-xs uppercase tracking-[0.18em]
-                        transition-all rounded-xl flex items-center justify-center gap-2 flex-grow sm:flex-none"
+                      className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
+                        transition-all rounded-xl flex items-center justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
                       style={{
                         background: 'transparent',
                         border: '1px solid var(--border-color)',
@@ -249,16 +251,18 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             {/* Right Content (profile image) */}
-            <div className="hidden md:flex items-center justify-center">
-              <CyberShieldGraphic />
+            <div className="hidden md:flex items-center md:col-span-5 justify-end">
+              <div className="transform md:translate-x-8 lg:translate-x-12 xl:translate-x-20">
+                <CyberShieldGraphic />
+              </div>
             </div>
 
             {/* Mobile Profile Display (Inline) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="md:hidden flex justify-center w-full relative z-0 mt-2"
+              className="md:hidden flex justify-center w-full relative z-0 -mt-16 sm:-mt-20"
             >
               <CyberShieldGraphic />
             </motion.div>
@@ -270,4 +274,3 @@ export const Hero: React.FC = () => {
       </div>
   );
 };
-

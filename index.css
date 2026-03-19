@@ -682,52 +682,26 @@ button,
       radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.05), transparent 40%);
   }
 
-  /* ─────────────────────────────────────────────
-     STRICT RESPONSIVE LAYOUT SYSTEM
-  ───────────────────────────────────────────── */
-
-  /* ── PART 2: MAIN WRAPPER ── */
-  /* Ensures all sections safely wrap content in the center */
-  section, 
-  .wrapper-main, 
-  main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* keep horizontal and vertical balanced if needed, but primarily justify-content */
-    flex-direction: column;
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-8);
-  }
-
-  section > *,
-  main > * {
-    width: 100%;
-  }
-
-  /* ── PART 3 & 4: INNER CONTAINER ── */
-  /* Ensures content stretches on mobile, centers on desktop, equal 20px spacing */
-  .container-progressive,
-  .container-inner {
+  /* ── Container ── */
+  .container-progressive {
     width: 100%;
     max-width: 1200px;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 4vw, 2.5rem);
+    padding-right: clamp(1rem, 4vw, 2.5rem);
   }
 
   @media (min-width: 1600px) {
-    .container-progressive,
-    .container-inner {
-      max-width: 1300px; /* Kept in the 1100-1300 range specified */
+    .container-progressive {
+      max-width: 1400px;
     }
   }
 
-  /* ── PART 5 & 7: GRID/FLEX ALIGNMENT & TEXT READABILITY ── */
-  p, .text-readability {
-    max-width: 75ch; /* Limit text width for readability */
-    margin-left: auto;
-    margin-right: auto;
+  /* ── Section Spacing ── */
+  section {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
   }
 
   /* ── Tech Background ── */
