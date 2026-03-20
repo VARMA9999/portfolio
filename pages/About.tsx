@@ -46,7 +46,7 @@ export const About: React.FC = () => {
               <div className="pt-6 border-t border-border-color mt-2 flex flex-col sm:flex-row flex-wrap gap-3">
                 {/* VIEW: Direct PDF Access */}
                 <a
-                  href="/Manikanta_Varma_Resume.pdf"
+                  href="/ManikantaVarmaResume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-accent-primary border border-accent-primary/30 bg-accent-primary/5 hover:bg-accent-primary/10 hover:border-accent-primary/60 transition-all"
@@ -59,8 +59,8 @@ export const About: React.FC = () => {
                 </a>
                 {/* DOWNLOAD: Fallback/Forced Download Attribute */}
                 <a
-                  href="/Manikanta_Varma_Resume.pdf"
-                  download="Manikanta_Varma_Resume.pdf"
+                  href="/ManikantaVarmaResume.pdf"
+                  download="ManikantaVarmaResume.pdf"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-xl font-orbitron font-black text-[10px] uppercase tracking-widest text-black bg-accent-primary hover:opacity-90 transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)]"
                   onClick={() => {
                     if ((window as any).gtag) (window as any).gtag('event', 'resume_download', { event_category: 'portfolio' });

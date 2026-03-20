@@ -158,8 +158,8 @@ export const Hero: React.FC = () => {
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
-                href="/Manikanta_Varma_Resume.pdf"
-                download="G_Manikanta_Varma_Resume.pdf"
+                href="/ManikantaVarmaResume.pdf"
+                download="ManikantaVarmaResume.pdf"
                 className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs
                   uppercase tracking-[0.18em] transition-all rounded-xl flex items-center
                   justify-center gap-2 flex-1 min-w-[140px] sm:flex-none sm:min-w-0"
@@ -177,7 +177,7 @@ export const Hero: React.FC = () => {
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
-                href="/Manikanta_Varma_Resume.pdf"
+                href="/ManikantaVarmaResume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 sm:px-7 sm:py-4 font-orbitron font-bold text-[0.65rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.18em]
