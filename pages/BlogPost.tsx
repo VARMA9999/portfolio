@@ -2169,21 +2169,22 @@ export const BlogPost: React.FC = () => {
                  <div className="bg-bg-secondary p-4 rounded-xl border border-border-color shadow-inner space-y-4">
                    <Prose text="This vulnerability executes fundamentally at the topmost layer of the OSI model, compromising the business logic built into the application." />
                    
-                   <div className="grid grid-cols-1 md:grid-cols-7 gap-2">
-                      {['L1 Physical', 'L2 Data Link', 'L3 Network', 'L4 Transport', 'L5 Session', 'L6 Presentation'].map((layer) => (
-                         <div key={layer} className="bg-bg-primary border border-border-color rounded-lg p-2.5 md:p-2 text-center text-text-muted font-bold font-mono text-[9px] flex items-center justify-center min-h-[40px] md:min-h-0">
-                           <span className="rotate-0 md:-rotate-90 whitespace-nowrap">{layer}</span>
-                         </div>
-                      ))}
-                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-2.5 md:p-2 text-center text-red-500 font-mono font-black text-[10px] sm:text-xs flex items-center justify-center relative overflow-hidden min-h-[50px] md:min-h-0">
+                    <div className="flex flex-col gap-2 max-w-lg mx-auto">
+                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-3 text-center text-red-500 font-mono font-black text-xs flex items-center justify-center relative overflow-hidden min-h-[50px] shadow-[0_0_15px_rgba(239,68,68,0.1)]">
                          <motion.div 
                            className="absolute inset-0 bg-red-400/20"
                            animate={{ opacity: [0, 0.5, 0] }}
                            transition={{ duration: 2, repeat: Infinity }}
                          />
-                         <span className="relative z-10 rotate-0 md:-rotate-90 whitespace-nowrap drop-shadow-[0_0_5px_rgba(239,68,68,0.5)] leading-tight">L7 Application<br/><span className="text-[8px] font-normal opacity-80 uppercase hidden md:block mt-1">Vulnerability Core</span></span>
+                         <span className="relative z-10 whitespace-nowrap drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]">L7 Application<br/><span className="text-[9px] font-normal opacity-90 uppercase mt-1">Vulnerability Core Layer</span></span>
                       </div>
-                   </div>
+
+                      {['L6 Presentation', 'L5 Session', 'L4 Transport', 'L3 Network', 'L2 Data Link', 'L1 Physical'].map((layer) => (
+                         <div key={layer} className="bg-bg-primary border border-border-color rounded-lg p-3 text-center text-text-muted/80 font-bold font-mono text-[10px] flex items-center justify-center min-h-[44px] transition-colors hover:border-accent-primary/30">
+                           <span className="whitespace-nowrap">{layer}</span>
+                         </div>
+                      ))}
+                    </div>
                  </div>
               </Section>
               
