@@ -181,7 +181,7 @@ export const BurpSimulation: React.FC<BurpSimulationProps> = ({
                 className="h-full overflow-hidden"
               >
                 {step.response ? (
-                  <div className="font-mono text-[10px] sm:text-xs leading-relaxed text-red-300">
+                  <div className="font-mono text-[10px] sm:text-xs leading-relaxed text-red-600 dark:text-red-300">
                     {step.response.split('\n').map((line, i) => (
                       <div key={i}>{line}</div>
                     ))}

@@ -227,30 +227,34 @@ body {
   pointer-events: none;
   overflow: hidden;
 }
-.wallpaper-layer > .wp-light,
-.wallpaper-layer > .wp-dark {
+
+.wallpaper-layer>.wp-light,
+.wallpaper-layer>.wp-dark {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   transition: opacity 550ms var(--transition-timing), transform 550ms var(--transition-timing);
 }
-.wallpaper-layer > .wp-light {
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(139,92,246,0.06)), radial-gradient(circle at 10% 20%, rgba(139,92,246,0.06), transparent 20%);
+
+.wallpaper-layer>.wp-light {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(139, 92, 246, 0.06)), radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.06), transparent 20%);
   opacity: 0;
   transform: scale(1.02);
 }
-.wallpaper-layer > .wp-dark {
-  background-image: linear-gradient(180deg, rgba(8,5,23,0.35), rgba(34,0,60,0.35));
+
+.wallpaper-layer>.wp-dark {
+  background-image: linear-gradient(180deg, rgba(8, 5, 23, 0.35), rgba(34, 0, 60, 0.35));
   opacity: 1;
 }
 
 /* When theme is light, show light wallpaper, otherwise dark */
-[data-theme='light'] .wallpaper-layer > .wp-light {
+[data-theme='light'] .wallpaper-layer>.wp-light {
   opacity: 1;
   transform: scale(1);
 }
-[data-theme='light'] .wallpaper-layer > .wp-dark {
+
+[data-theme='light'] .wallpaper-layer>.wp-dark {
   opacity: 0;
 }
 
@@ -320,18 +324,34 @@ button,
 
 /* ── Hero profile image float (CSS-only — replaces Framer Motion JS loop) ── */
 @keyframes hero-float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
+
 .hero-float {
   animation: hero-float 6s ease-in-out infinite;
 }
 
 /* ── Voice narration waveform bars (CSS-only — zero JS cost) ── */
 @keyframes voice-bar {
-  0%, 100% { height: 2px; }
-  50% { height: 10px; }
+
+  0%,
+  100% {
+    height: 2px;
+  }
+
+  50% {
+    height: 10px;
+  }
 }
+
 .voice-bar {
   display: inline-block;
   height: 2px;
@@ -340,6 +360,7 @@ button,
 
 /* Prefers-reduced-motion: disable all non-essential animations */
 @media (prefers-reduced-motion: reduce) {
+
   .hero-float,
   .voice-bar,
   .animate-shield-pulse,
@@ -349,6 +370,7 @@ button,
   .animate-pulse-ring {
     animation: none !important;
   }
+
   * {
     transition-duration: 0.01ms !important;
   }
@@ -738,7 +760,6 @@ button,
   html {
     scroll-behavior: auto !important;
     /* Prevent rubberbanding on iOS from causing layout jumps */
-    overscroll-behavior-y: none;
   }
 
   body {
@@ -746,6 +767,7 @@ button,
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
   }
+
   section {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -1035,13 +1057,17 @@ button,
   max-width: 100%;
 }
 
-img, video, canvas, svg {
+img,
+video,
+canvas,
+svg {
   max-width: 100%;
   height: auto;
 }
 
 /* 2. OSI LAYER — remove rotation on mobile */
 @media (max-width: 768px) {
+
   .osi-layer,
   [class*="osi-layer"],
   [class*="writing-mode"],
@@ -1062,14 +1088,24 @@ img, video, canvas, svg {
 
 /* 3. PREVENT TEXT OVERFLOW */
 @media (max-width: 768px) {
-  p, h1, h2, h3, h4, h5, h6, span, label {
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  label {
     word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
 
   /* Code blocks — scroll horizontally, don't overflow */
-  pre, code {
+  pre,
+  code {
     overflow-x: auto;
     white-space: pre;
     word-break: normal;
@@ -1089,6 +1125,7 @@ img, video, canvas, svg {
 
 /* 4. FLOATING BUTTON — reposition for mobile */
 @media (max-width: 768px) {
+
   .floating-button,
   [class*="floating-button"],
   [class*="fixed bottom"] {
@@ -1128,6 +1165,7 @@ img, video, canvas, svg {
 
 /* 6. FONT SIZE ADJUSTMENTS  */
 @media (max-width: 480px) {
+
   /* Blog section headers (Orbitron font sections) */
   .font-orbitron {
     letter-spacing: 0.02em !important;
@@ -1146,6 +1184,7 @@ img, video, canvas, svg {
 
 /* 7. BLOG POST SECTIONS — prevent inner content overflow */
 @media (max-width: 768px) {
+
   /* Section content containers */
   .blog-section-content,
   .rounded-2xl,

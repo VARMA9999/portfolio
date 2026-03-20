@@ -12,7 +12,6 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = ({ activeSection, theme, themeMode, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isThemeOpen, setIsThemeOpen] = useState(false);
   const location = useLocation();
   const isResearchHubActive = location.pathname.startsWith('/blog') || 
                              location.pathname.startsWith('/paths') || 
@@ -120,59 +119,46 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, theme, th
 
         <div className="h-3.5 w-px" style={{ background: 'var(--border-color)' }} aria-hidden="true" />
 
-        {/* Unified Theme Dropdown */}
-        <div className="relative">
+        {/* Unified Theme Toggle Button */}
+        <div className="relative flex items-center">
           <button
-            onClick={() => setIsThemeOpen(!isThemeOpen)}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-border-color bg-bg-card hover:border-accent-primary transition-all duration-300 group"
-            aria-label="Toggle Theme Menu"
-            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)' }}
+            onClick={() => toggleTheme(theme === 'dark' ? 'light' : 'dark')}
+            className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border transition-all duration-300 group shadow-sm
+              ${theme === 'dark' 
+                ? 'bg-accent-primary/10 border-accent-primary/30 shadow-[0_0_15px_var(--accent-glow-subtle)]' 
+                : 'bg-white border-border-color shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:border-accent-primary/30 hover:bg-slate-50'}`}
+            aria-label="Toggle Theme"
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
           >
-            {theme === 'dark' ? (
-              <Moon size={14} className="text-accent-primary" />
-            ) : (
-              <Sun size={14} className="text-accent-primary" />
-            )}
-            <span className="text-[9px] font-orbitron font-black tracking-widest text-text-primary hidden lg:block uppercase">Theme</span>
-            <motion.div
-              animate={{ rotate: isThemeOpen ? 180 : 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
-              <ChevronDown size={12} className="text-text-muted group-hover:text-accent-primary transition-colors" />
-            </motion.div>
+            <AnimatePresence mode="popLayout" initial={false}>
+              {theme === 'dark' ? (
+                <motion.div
+                  key="moon"
+                  initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, type: 'spring', stiffness: 300, damping: 20 }}
+                  className="flex items-center justify-center"
+                >
+                  <Moon size={18} className="text-accent-primary drop-shadow-[0_0_8px_rgba(var(--accent-primary-rgb),0.5)]" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="sun"
+                  initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, type: 'spring', stiffness: 300, damping: 20 }}
+                  className="flex items-center justify-center"
+                >
+                  <Sun size={20} className="text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.4)]" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            {/* Minimalist interactive ripple effect element */}
+            <div className="absolute inset-0 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 origin-center bg-accent-primary/[0.03] z-[-1]" />
           </button>
-
-          <AnimatePresence>
-            {isThemeOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="absolute top-full right-0 mt-3 w-40 rounded-2xl border border-border-color shadow-2xl overflow-hidden z-50 py-1.5"
-                style={{ background: 'var(--bg-nav)', backdropFilter: 'blur(20px)' }}
-              >
-                {[
-                  { mode: 'light' as const, label: 'Light Mode', icon: Sun },
-                  { mode: 'dark' as const, icon: Moon, label: 'Dark Mode' },
-                  { mode: 'auto' as const, icon: Monitor, label: 'Auto (System)' }
-                ].map(({ mode, icon: Icon, label }) => (
-                  <button
-                    key={mode}
-                    onClick={() => {
-                      toggleTheme(mode);
-                      setIsThemeOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-all duration-200 group
-                      ${themeMode === mode ? 'bg-accent-primary/10 text-accent-primary' : 'text-text-muted hover:text-text-primary hover:bg-white/5'}`}
-                  >
-                    <Icon size={14} className={themeMode === mode ? 'text-accent-primary' : 'text-text-muted group-hover:text-text-primary'} />
-                    <span className="text-[10px] font-orbitron font-bold uppercase tracking-wider">{label}</span>
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
 
       </div>

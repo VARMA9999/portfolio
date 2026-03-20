@@ -1337,15 +1337,15 @@ export const BlogPost: React.FC = () => {
           className="blog-container"
         >
           {/* Navigation Back Link */}
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-text-muted hover:text-accent-primary transition-colors mb-6 group"
+          <Link
+            to="/research-hub"
+            className="flex items-center gap-2 text-text-muted hover:text-accent-primary transition-colors mb-6 group w-fit"
           >
             <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
             <span className="font-orbitron font-black text-[10px] uppercase tracking-widest">
               {translatedUI.backToResearchHub}
             </span>
-          </button>
+          </Link>
 
           {/* 1. COVER IMAGE */}
           <div className="relative w-full overflow-hidden mb-8 bg-[#0a0a0a] rounded-2xl flex items-center justify-center" 
@@ -2171,17 +2171,17 @@ export const BlogPost: React.FC = () => {
                    
                    <div className="grid grid-cols-1 md:grid-cols-7 gap-2">
                       {['L1 Physical', 'L2 Data Link', 'L3 Network', 'L4 Transport', 'L5 Session', 'L6 Presentation'].map((layer) => (
-                         <div key={layer} className="bg-bg-primary border border-border-color rounded-lg p-2 text-center text-text-muted font-bold font-mono text-[8px] sm:text-[9px] flex items-center justify-center">
-                           <span className="-rotate-90 md:rotate-0 whitespace-nowrap">{layer}</span>
+                         <div key={layer} className="bg-bg-primary border border-border-color rounded-lg p-2.5 md:p-2 text-center text-text-muted font-bold font-mono text-[9px] flex items-center justify-center min-h-[40px] md:min-h-0">
+                           <span className="rotate-0 md:-rotate-90 whitespace-nowrap">{layer}</span>
                          </div>
                       ))}
-                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-2 text-center text-red-500 font-mono font-black text-[10px] sm:text-xs flex items-center justify-center relative overflow-hidden">
+                      <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-2.5 md:p-2 text-center text-red-500 font-mono font-black text-[10px] sm:text-xs flex items-center justify-center relative overflow-hidden min-h-[50px] md:min-h-0">
                          <motion.div 
                            className="absolute inset-0 bg-red-400/20"
                            animate={{ opacity: [0, 0.5, 0] }}
                            transition={{ duration: 2, repeat: Infinity }}
                          />
-                         <span className="relative z-10 -rotate-90 md:rotate-0 whitespace-nowrap drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]">L7 Application<br/><span className="text-[8px] font-normal opacity-80 uppercase hidden md:block mt-1">Vulnerability Core</span></span>
+                         <span className="relative z-10 rotate-0 md:-rotate-90 whitespace-nowrap drop-shadow-[0_0_5px_rgba(239,68,68,0.5)] leading-tight">L7 Application<br/><span className="text-[8px] font-normal opacity-80 uppercase hidden md:block mt-1">Vulnerability Core</span></span>
                       </div>
                    </div>
                  </div>

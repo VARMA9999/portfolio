@@ -122,11 +122,11 @@ export const TerminalSimulation: React.FC<TerminalSimulationProps> = ({
     return output.split('\n').map((line, i) => {
       // Basic syntax highlighting for terminal output
       let colorClass = "text-text-muted";
-      if (line.includes('[+]') || line.includes('Success')) colorClass = "text-green-400";
-      if (line.includes('[-]') || line.includes('Error')) colorClass = "text-red-400";
-      if (line.includes('[*]')) colorClass = "text-blue-400";
-      if (line.includes('200 OK')) colorClass = "text-green-500 font-bold";
-      if (line.includes('403 Forbidden') || line.includes('401 Unauthorized')) colorClass = "text-red-500 font-bold";
+      if (line.includes('[+]') || line.includes('Success')) colorClass = "text-green-600 dark:text-green-400";
+      if (line.includes('[-]') || line.includes('Error')) colorClass = "text-red-600 dark:text-red-400";
+      if (line.includes('[*]')) colorClass = "text-blue-600 dark:text-blue-400";
+      if (line.includes('200 OK')) colorClass = "text-emerald-600 dark:text-emerald-400 font-bold";
+      if (line.includes('403 Forbidden') || line.includes('401 Unauthorized')) colorClass = "text-rose-600 dark:text-rose-400 font-bold";
       
       return (
         <div key={i} className={`font-mono text-[10px] sm:text-xs leading-relaxed ${colorClass}`}>
